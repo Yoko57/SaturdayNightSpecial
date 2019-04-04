@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Roll"; ObjectID = "BgO-Lk-FEf"; */
+"BgO-Lk-FEf.normalTitle" = "Roll";
+
+/* Class = "UILabel"; text = "Dice"; ObjectID = "DgC-EZ-hyR"; */
+"DgC-EZ-hyR.text" = "Dice";
+
+/* Class = "UIButton"; normalTitle = "Front"; ObjectID = "KDm-Bm-fae"; */
+"KDm-Bm-fae.normalTitle" = "Front";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "ymb-vy-gP5"; */
+"ymb-vy-gP5.normalTitle" = "Back";

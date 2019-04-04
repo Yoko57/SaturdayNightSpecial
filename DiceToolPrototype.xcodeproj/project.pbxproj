@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A7F7CEEC221E6006006A9054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7CEEB221E6006006A9054 /* AppDelegate.swift */; };
+		A7009AF0224DBE670044662E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F7CEEF221E6006006A9054 /* Main.storyboard */; };
+		A7009AF5224DD75E0044662E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7CEEB221E6006006A9054 /* AppDelegate.swift */; };
 		A7F7CEEE221E6006006A9054 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7CEED221E6006006A9054 /* ViewController.swift */; };
-		A7F7CEF1221E6006006A9054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F7CEEF221E6006006A9054 /* Main.storyboard */; };
 		A7F7CEF3221E6007006A9054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F7CEF2221E6007006A9054 /* Assets.xcassets */; };
 		A7F7CEF6221E6007006A9054 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F7CEF4221E6007006A9054 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A7F7CEE8221E6006006A9054 /* Dicetool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dicetool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F7CEE8221E6006006A9054 /* DiceToolPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceToolPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F7CEEB221E6006006A9054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F7CEED221E6006006A9054 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7F7CEF0221E6006006A9054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		A7F7CEDF221E6006006A9054 = {
 			isa = PBXGroup;
 			children = (
-				A7F7CEEA221E6006006A9054 /* Dicetool */,
+				A7F7CEEA221E6006006A9054 /* DiceToolPrototype */,
 				A7F7CEE9221E6006006A9054 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		A7F7CEE9221E6006006A9054 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7F7CEE8221E6006006A9054 /* Dicetool.app */,
+				A7F7CEE8221E6006006A9054 /* DiceToolPrototype.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A7F7CEEA221E6006006A9054 /* Dicetool */ = {
+		A7F7CEEA221E6006006A9054 /* DiceToolPrototype */ = {
 			isa = PBXGroup;
 			children = (
 				A7F7CEEB221E6006006A9054 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				A7F7CEF4221E6007006A9054 /* LaunchScreen.storyboard */,
 				A7F7CEF7221E6007006A9054 /* Info.plist */,
 			);
-			path = Dicetool;
+			path = DiceToolPrototype;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A7F7CEE7221E6006006A9054 /* Dicetool */ = {
+		A7F7CEE7221E6006006A9054 /* DiceToolPrototype */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7F7CEFA221E6007006A9054 /* Build configuration list for PBXNativeTarget "Dicetool" */;
+			buildConfigurationList = A7F7CEFA221E6007006A9054 /* Build configuration list for PBXNativeTarget "DiceToolPrototype" */;
 			buildPhases = (
 				A7F7CEE4221E6006006A9054 /* Sources */,
 				A7F7CEE5221E6006006A9054 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = Dicetool;
+			name = DiceToolPrototype;
 			productName = Dicetool;
-			productReference = A7F7CEE8221E6006006A9054 /* Dicetool.app */;
+			productReference = A7F7CEE8221E6006006A9054 /* DiceToolPrototype.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,10 +96,11 @@
 				TargetAttributes = {
 					A7F7CEE7221E6006006A9054 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
-			buildConfigurationList = A7F7CEE3221E6006006A9054 /* Build configuration list for PBXProject "Dicetool" */;
+			buildConfigurationList = A7F7CEE3221E6006006A9054 /* Build configuration list for PBXProject "DiceToolPrototype" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A7F7CEE7221E6006006A9054 /* Dicetool */,
+				A7F7CEE7221E6006006A9054 /* DiceToolPrototype */,
 			);
 		};
 /* End PBXProject section */
@@ -124,7 +125,7 @@
 			files = (
 				A7F7CEF6221E6007006A9054 /* LaunchScreen.storyboard in Resources */,
 				A7F7CEF3221E6007006A9054 /* Assets.xcassets in Resources */,
-				A7F7CEF1221E6006006A9054 /* Main.storyboard in Resources */,
+				A7009AF0224DBE670044662E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7009AF5224DD75E0044662E /* AppDelegate.swift in Sources */,
 				A7F7CEEE221E6006006A9054 /* ViewController.swift in Sources */,
-				A7F7CEEC221E6006006A9054 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,15 +283,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKCMNDGP3D;
-				INFOPLIST_FILE = Dicetool/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DiceToolPrototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.chocolateshop45.Dicetool.Dicetool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.chocolateshop45.DiceToolPrototype.DiceToolPrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,15 +304,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKCMNDGP3D;
-				INFOPLIST_FILE = Dicetool/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DiceToolPrototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.chocolateshop45.Dicetool.Dicetool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.chocolateshop45.DiceToolPrototype.DiceToolPrototype;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7F7CEE3221E6006006A9054 /* Build configuration list for PBXProject "Dicetool" */ = {
+		A7F7CEE3221E6006006A9054 /* Build configuration list for PBXProject "DiceToolPrototype" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7F7CEF8221E6007006A9054 /* Debug */,
@@ -326,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7F7CEFA221E6007006A9054 /* Build configuration list for PBXNativeTarget "Dicetool" */ = {
+		A7F7CEFA221E6007006A9054 /* Build configuration list for PBXNativeTarget "DiceToolPrototype" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7F7CEFB221E6007006A9054 /* Debug */,

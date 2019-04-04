@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Dicetool.xcodeproj">
+      location = "self:/Users/nakamurahiroyuki/Desktop/swift  folder/DiceTool/DiceToolPrototype.xcodeproj">
    </FileRef>
 </Workspace>
