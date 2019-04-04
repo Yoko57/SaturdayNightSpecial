@@ -4,7 +4,7 @@
 //  ViewController.swift
 //  DiceTool
 //
-//  Created by 中村 洋行 on 2019/02/21.
+//  Created by Hiroyuki Nakamura on 2019/02/21.
 //  Copyright © 2019 Hiroyuki Nakamura. All rights reserved.
 //
 
