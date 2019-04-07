@@ -52,6 +52,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   //UserDefaults ユーザーデフォルト　一時記憶関連
   let userDefaults = UserDefaults.standard
+	
+	private weak var frontImagePicker: UIImagePickerController?
+	private weak var backImagePicker: UIImagePickerController?
   
  
   
@@ -208,6 +211,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     let frontPicker = UIImagePickerController()
     frontPicker.sourceType = sourceType
     frontPicker.delegate = self
+	frontImagePicker = frontPicker
     
     self.present(frontPicker, animated: true, completion: nil)
   
@@ -223,6 +227,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     let backPicker = UIImagePickerController()
     backPicker.sourceType = sourceType
     backPicker.delegate = self
+	backImagePicker = backPicker
     
     self.present(backPicker, animated: true, completion: nil)
     
@@ -231,14 +236,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
  
   // UIImagePickerのデリゲートメソッド front
-  func imagePickerController(_ frontPicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     // 画像を置き換える　1[editedImage] 2[originalImage] で表示される。　ちょー重要。
     // 1のときはインスタンスの生成に frontPicker.allowsEditing = true を書き込む
     // 2のときは frontPicker.allowsEditing = true を消す
-      frontImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-       print("frontImageView")
+	switch picker {
+	case frontImagePicker:
+		frontImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+		print("frontImageView")
+		
+	case backImagePicker:
+		backImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+		print("backImageView")
+		
+	default:
+		break
+	}
       // 前の画面に戻る
-      self.dismiss(animated: true, completion: nil)
+      picker.dismiss(animated: true, completion: nil)
     
   }
   
