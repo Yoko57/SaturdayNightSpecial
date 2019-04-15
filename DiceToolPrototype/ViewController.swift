@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   @IBOutlet weak var frontImageView: UIImageView!
   
+  @IBOutlet weak var movieView: UIImageView!
   
   @IBOutlet weak var textField: UITextField!
   
@@ -56,7 +57,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   let userDefaults = UserDefaults.standard
 	
   //動画関連
+  let movieImagePicker = UIImagePickerController()
   var videoURL: URL?
+
   
   // loveeさんから加筆してもらった文
 	private weak var frontImagePicker: UIImagePickerController?
@@ -83,7 +86,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     if let aaa = userDefaults.object(forKey: "todos") {
       todos = aaa as! Array<String>
     }
-    
     
     
     
@@ -200,7 +202,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   
    
-   
+  @IBAction func selectImage(_ sender: Any) {
+    movieImagePicker.sourceType = .photoLibrary
+    movieImagePicker.delegate = self
+    movieImagePicker.mediaTypes = ["public.movie"]
+    //画像だけ
+    //imagePickerController.mediaTypes = ["public.image"]
+    present(movieImagePicker, animated: true, completion: nil)
+  }
+  
    
    
    
@@ -221,8 +231,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
        // loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
 	frontImagePicker = frontPicker
     
-    //動画も静止画も選択したい
-    frontPicker.mediaTypes = ["public.image", "public.movie"]
     
     
     self.present(frontPicker, animated: true, completion: nil)
@@ -245,16 +253,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 	backImagePicker = backPicker
     
     
-    //動画も静止画も選択したい
-    backPicker.mediaTypes = ["public.image", "public.movie"]
-    
-    
-    self.present(backPicker, animated: true, completion: nil)
-    
-    
+    self.present(backPicker, animated: true)
   }
   
+  
  
+  
+  @IBAction func playMovie(_ sender: Any) {
+  
+  
+  if let videoURL = videoURL{
+    let moviePicker = AVPlayer(url: videoURL)
+    let playerViewController = AVPlayerViewController()
+    playerViewController.player = moviePicker
+    
+    present(playerViewController, animated: true){
+      print("動画再生")
+      playerViewController.player!.play()
+     }
+   }
+  }
   // UIImagePickerのデリゲートメソッド
   
     // loveeさんから加筆もしくは修正してもらった文 UIImagePickerController を picker として引数に渡している。　switch で case に分岐して front と back に応じてそれぞれ表示している。
@@ -265,12 +283,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 	switch picker {
 	case frontImagePicker:
 		frontImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-		print("frontImageView")
+    print("frontImageView")
     
 	case backImagePicker:
 		backImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-		print("backImageView")
+    print("backImageView")
 		
+  case movieImagePicker:
+    videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL
+    print(videoURL!)
+    movieView.image = previewImageFromVideo(videoURL!)!
+    print("movieView")
+    
+    
   default:
 		break
 	}
@@ -281,6 +306,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   }
   
   
+  //動画関連
+  func previewImageFromVideo(_ url:URL) -> UIImage? {
+    
+    print("動画からサムネイルを生成する")
+    let asset = AVAsset(url:url)
+    let imageGenerator = AVAssetImageGenerator(asset:asset)
+    imageGenerator.appliesPreferredTrackTransform = true
+    var time = asset.duration
+    time.value = min(time.value,2)
+    do {
+      let imageRef = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+      return UIImage(cgImage: imageRef)
+    } catch {
+      return nil
+    }
+  }
+
   
   
   
