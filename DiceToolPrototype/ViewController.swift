@@ -10,6 +10,8 @@
 
 import UIKit
 import Photos
+import AVKit
+import AVFoundation
 
 
 
@@ -53,9 +55,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   //UserDefaults ユーザーデフォルト　一時記憶関連
   let userDefaults = UserDefaults.standard
 	
+  //動画関連
+  var videoURL: URL?
+  
+  // loveeさんから加筆してもらった文
 	private weak var frontImagePicker: UIImagePickerController?
 	private weak var backImagePicker: UIImagePickerController?
-  
  
   
   override func viewDidLoad() {
@@ -211,7 +216,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     let frontPicker = UIImagePickerController()
     frontPicker.sourceType = sourceType
     frontPicker.delegate = self
+    frontPicker.allowsEditing = true
+    
+       // loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
 	frontImagePicker = frontPicker
+    
+    //動画も静止画も選択したい
+    frontPicker.mediaTypes = ["public.image", "public.movie"]
+    
     
     self.present(frontPicker, animated: true, completion: nil)
   
@@ -227,7 +239,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     let backPicker = UIImagePickerController()
     backPicker.sourceType = sourceType
     backPicker.delegate = self
+    backPicker.allowsEditing = true
+    
+    // loveeさんから加筆もしくは修正してもらった文 backImagePicker = backPicker を　switch文のcaseに使っている
 	backImagePicker = backPicker
+    
+    
+    //動画も静止画も選択したい
+    backPicker.mediaTypes = ["public.image", "public.movie"]
+    
     
     self.present(backPicker, animated: true, completion: nil)
     
@@ -235,42 +255,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   }
   
  
-  // UIImagePickerのデリゲートメソッド front
+  // UIImagePickerのデリゲートメソッド
+  
+    // loveeさんから加筆もしくは修正してもらった文 UIImagePickerController を picker として引数に渡している。　switch で case に分岐して front と back に応じてそれぞれ表示している。
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     // 画像を置き換える　1[editedImage] 2[originalImage] で表示される。　ちょー重要。
     // 1のときはインスタンスの生成に frontPicker.allowsEditing = true を書き込む
     // 2のときは frontPicker.allowsEditing = true を消す
 	switch picker {
 	case frontImagePicker:
-		frontImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+		frontImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
 		print("frontImageView")
-		
+    
 	case backImagePicker:
-		backImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+		backImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
 		print("backImageView")
 		
-	default:
+  default:
 		break
 	}
       // 前の画面に戻る
+    // loveeさんから加筆もしくは修正してもらった文 引数pickerで前の画面に戻る。
       picker.dismiss(animated: true, completion: nil)
     
   }
-  
-  ////ここから、間違っていると思う文
-  
-  // UIImagePickerのデリゲートメソッド back
-  // 書き方が悪いのかfrontで表示される
-  func backImagePickerController(_ backPicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    
-    
-    backImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-    
-    // 前の画面に戻る
-    self.dismiss(animated: true, completion: nil)
-  }
-  
-    ////ここまで、間違っている文
   
   
   
