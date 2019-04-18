@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   @IBOutlet weak var frontImageView: UIImageView!
   
+  @IBOutlet weak var iconImageView: UIImageView!
+  
   @IBOutlet weak var movieView: UIImageView!
   
   @IBOutlet weak var textField: UITextField!
@@ -60,11 +62,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   let movieImagePicker = UIImagePickerController()
   var videoURL: URL?
 
+  //アイコン
+  private weak var addIconImagePicker: UIImagePickerController?
+  private weak var iconImagePicker: UIImagePickerController?
+  
+  // タッチしたビューの中心とタッチした場所の座標のズレを保持する変数
+  var gapX:CGFloat = 0.0  // x座標
+  var gapY:CGFloat = 0.0  // y座標
+  
   
   // loveeさんから加筆してもらった文
 	private weak var frontImagePicker: UIImagePickerController?
 	private weak var backImagePicker: UIImagePickerController?
- 
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -91,11 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
   }
   
-  //キーボードの機能////
-  ///キーボード以外をタップするとキーボードが解除される/////////
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
-  }
+  
   
   
   
@@ -201,6 +206,101 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   }
   
   
+  @IBAction func Icon(_ sender: Any) {
+    let sourceType:UIImagePickerController.SourceType =
+      UIImagePickerController.SourceType.photoLibrary
+    
+    // インスタンスの作成
+    let iconPicker = UIImagePickerController()
+    iconPicker.sourceType = sourceType
+    iconPicker.delegate = self
+    iconPicker.allowsEditing = true
+    
+    // loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
+    iconImagePicker = iconPicker
+    
+    
+    
+    self.present(iconPicker, animated: true, completion: nil)
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  @IBAction func moveIcon(_ sender: Any) {
+    
+    
+    //初期位置を調整
+    iconImageView.center = CGPoint(x: view.center.x, y: view.center.y + 100)
+    //ユーザーの操作を有効にする
+    iconImageView.isUserInteractionEnabled = true
+    //タッチしたものがアイコンかどうかを判別する用のタグ
+    iconImageView.tag = 1
+    //ビューに追加
+    view.addSubview(iconImageView)
+  
+  
+  }
+  
+  // タッチした位置で最初に見つかったところにあるビューを取得してしまおうという
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // 最初にタッチした指のみ取得
+    if let touch = touches.first {
+      // タッチしたビューをviewプロパティで取得する
+      if let touchedView = touch.view {
+        // tagでアイコンかそうでないかを判断する
+        if touchedView.tag == 1 {
+          // タッチした場所とタッチしたビューの中心座標がどうずれているか？
+          gapX = touch.location(in: view).x - touchedView.center.x
+          gapY = touch.location(in: view).y - touchedView.center.y
+          // 例えば、タッチしたビューの中心のxが50、タッチした場所のxが60→中心から10ずれ
+          // この場合、指を100に持って行ったらビューの中心は90にしたい
+          // ビューの中心90 = 持って行った場所100 - ずれ10
+          touchedView.center = CGPoint(x: touch.location(in: view).x - gapX, y: touch.location(in: view).y - gapY)
+        }
+      }
+    }
+    //キーボードの機能////
+    ///キーボード以外をタップするとキーボードが解除される/////////
+    //self.view.endEditing(true)
+  }
+  
+  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // touchesBeganと同じ処理だが、gapXとgapYはタッチ中で同じものを使い続ける
+    // 最初にタッチした指のみ取得
+    if let touch = touches.first {
+      // タッチしたビューをviewプロパティで取得する
+      if let touchedView = touch.view {
+        // tagでアイコンかそうでないかを判断する
+        if touchedView.tag == 1 {
+          // gapX,gapYの取得は行わない
+          touchedView.center = CGPoint(x: touch.location(in: view).x - gapX, y: touch.location(in: view).y - gapY)
+        }
+      }
+    }
+  }
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // gapXとgapYの初期化
+    gapX = 0.0
+    gapY = 0.0
+  }
+  
+  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // touchesEndedと同じ処理
+    self.touchesEnded(touches, with: event)
+  }
+  
+  
+  
+  
+  
+  
+  
    
   @IBAction func selectImage(_ sender: Any) {
     movieImagePicker.sourceType = .photoLibrary
@@ -295,6 +395,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     movieView.image = previewImageFromVideo(videoURL!)!
     print("movieView")
     
+  case iconImagePicker:
+    iconImageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+    print("iconImageView")
     
   default:
 		break
