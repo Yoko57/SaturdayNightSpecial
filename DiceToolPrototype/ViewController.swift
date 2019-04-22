@@ -188,20 +188,33 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
        userDefaults.set(self.todos, forKey: "todos")
        userDefaults.synchronize()
       
+    }  /*  else if editingStyle == UITableViewCell.EditingStyle.insert {
+      todos.append("test")
+      tableView.setEditing(false, animated: true)
+      tableView.reloadData() */
     }
-  }
+    
+ 
   
+    
+    
   // タップした時の処理
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     if (indexPath.row == todos.count ) {
       // 最後のセルをタップしたときのみに処理される
       
-      /*うまくいかなくて未実装
-      label.text = "\(todos)"
+      
+      
+      
+      //うまくいかなくて未実装 セルをラベルテキストに渡す。
+      
+      textField.text = "\(todos[indexPath.row])"
       //ラベルテキストをテキストフィールドに変換
-      textField.text = label.text
-      */
+       
+       
+ 
+      
     }
   }
   
@@ -231,9 +244,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   
   
-  @IBAction func moveIcon(_ sender: Any) {
     
-    
+  
+  @IBAction func addIcon(_ sender: Any) {
     //初期位置を調整
     iconImageView.center = CGPoint(x: view.center.x, y: view.center.y + 100)
     //ユーザーの操作を有効にする
@@ -242,8 +255,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     iconImageView.tag = 1
     //ビューに追加
     view.addSubview(iconImageView)
-  
-  
+    
+    
   }
   
   // タッチした位置で最初に見つかったところにあるビューを取得してしまおうという

@@ -128,7 +128,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKe-CK-cX2">
-                                <rect key="frame" x="438" y="34" width="84" height="29.666666666666671"/>
+                                <rect key="frame" x="443" y="34" width="84" height="29.666666666666671"/>
                                 <state key="normal" title="SelectMovie"/>
                                 <connections>
                                     <action selector="selectImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u32-db-Mod"/>
@@ -141,11 +141,11 @@
                                     <action selector="Icon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2n9-ec-nYc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CD-iK-BWX" userLabel="Move Icon">
-                                <rect key="frame" x="206" y="20" width="71" height="29.666666666666671"/>
-                                <state key="normal" title="Move Icon"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CD-iK-BWX">
+                                <rect key="frame" x="206" y="20" width="61" height="29.666666666666671"/>
+                                <state key="normal" title="Add Icon"/>
                                 <connections>
-                                    <action selector="moveIcon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9c-zK-USc"/>
+                                    <action selector="addIcon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vus-JG-YAd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -161,7 +161,7 @@
                             <constraint firstItem="EKe-CK-cX2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7CD-iK-BWX" secondAttribute="trailing" constant="8" symbolic="YES" id="7Xz-lg-mIM"/>
                             <constraint firstItem="MUp-wJ-yER" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="74" id="Acy-0h-Zio"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Eny-vy-i2f" secondAttribute="bottom" constant="4" id="Adc-AQ-xba"/>
-                            <constraint firstAttribute="trailing" secondItem="EKe-CK-cX2" secondAttribute="trailing" constant="290" id="Ao3-oK-5N1"/>
+                            <constraint firstAttribute="trailing" secondItem="EKe-CK-cX2" secondAttribute="trailing" constant="285" id="Ao3-oK-5N1"/>
                             <constraint firstItem="KDm-Bm-fae" firstAttribute="leading" secondItem="ymb-vy-gP5" secondAttribute="trailing" constant="24" id="DfG-PV-Big"/>
                             <constraint firstItem="Ywa-vE-uKu" firstAttribute="trailing" secondItem="qbb-U8-kdd" secondAttribute="trailing" id="EWC-uZ-Kif"/>
                             <constraint firstItem="Bdc-t5-Yne" firstAttribute="leading" secondItem="B3w-Ct-GAS" secondAttribute="leading" constant="294" id="EfE-Gr-nOz"/>
@@ -181,7 +181,7 @@
                             <constraint firstItem="7Aw-6t-b0R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="YYZ-pd-fhp"/>
                             <constraint firstItem="ONd-gL-TJa" firstAttribute="firstBaseline" secondItem="KDm-Bm-fae" secondAttribute="baseline" id="Zzx-lR-l5J"/>
                             <constraint firstAttribute="bottom" secondItem="8JE-Ie-wrD" secondAttribute="bottom" id="a17-E6-iHA"/>
-                            <constraint firstItem="7Aw-6t-b0R" firstAttribute="leading" secondItem="EKe-CK-cX2" secondAttribute="trailing" constant="14" id="b1r-Ut-vSg"/>
+                            <constraint firstItem="7Aw-6t-b0R" firstAttribute="leading" secondItem="EKe-CK-cX2" secondAttribute="trailing" constant="9" id="b1r-Ut-vSg"/>
                             <constraint firstItem="B3w-Ct-GAS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KDm-Bm-fae" secondAttribute="trailing" constant="-144" id="cny-Fl-GLQ"/>
                             <constraint firstItem="KDm-Bm-fae" firstAttribute="baseline" secondItem="ymb-vy-gP5" secondAttribute="baseline" id="dCg-Eq-HXr"/>
                             <constraint firstItem="BgO-Lk-FEf" firstAttribute="top" secondItem="DgC-EZ-hyR" secondAttribute="bottom" constant="8" symbolic="YES" id="dY7-5C-jS7"/>
