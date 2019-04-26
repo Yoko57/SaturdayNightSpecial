@@ -71,7 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   var gapY:CGFloat = 0.0  // y座標
   
   
-  // loveeさんから加筆してもらった文
+  /// loveeさんから加筆してもらった文
 	private weak var frontImagePicker: UIImagePickerController?
 	private weak var backImagePicker: UIImagePickerController?
   
@@ -187,8 +187,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
        
        userDefaults.set(self.todos, forKey: "todos")
        userDefaults.synchronize()
+     
       
-    }  /*  else if editingStyle == UITableViewCell.EditingStyle.insert {
+      
+       /// EditingStyle.insert （挿入？）を見つけたが、使い方を理解できていない。　「コピー欄」を実装したい。
+    }/*  else if editingStyle == UITableViewCell.EditingStyle.insert {
       todos.append("test")
       tableView.setEditing(false, animated: true)
       tableView.reloadData() */
@@ -206,12 +209,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
       
       
       
+      /*
+      //うまくいかなくて未実装 セルのstringをラベルテキストに書き換え（渡し）たい。
       
-      //うまくいかなくて未実装 セルをラベルテキストに渡す。
-      
-      textField.text = "\(todos[indexPath.row])"
-      //ラベルテキストをテキストフィールドに変換
+      label.text = "\(todos[indexPath.row])"
+      //ラベルテキストをテキストフィールドに変換したい。 場合によっては　textField.text = "\(todos[indexPath.row])" と書いたが動作せず。
+       textField.text = label.text
        
+       */
        
  
       
@@ -229,7 +234,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     iconPicker.delegate = self
     iconPicker.allowsEditing = true
     
-    // loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
+    /// loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
     iconImagePicker = iconPicker
     
     
@@ -314,7 +319,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   
   
   
-   
+   //ムービーをフォトライブラリから選ぶ
   @IBAction func selectImage(_ sender: Any) {
     movieImagePicker.sourceType = .photoLibrary
     movieImagePicker.delegate = self
@@ -341,7 +346,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     frontPicker.delegate = self
     frontPicker.allowsEditing = true
     
-       // loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
+       /// loveeさんから加筆もしくは修正してもらった文 frontImagePicker = frontPicker を　switch文のcaseに使っている
 	frontImagePicker = frontPicker
     
     
@@ -362,7 +367,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     backPicker.delegate = self
     backPicker.allowsEditing = true
     
-    // loveeさんから加筆もしくは修正してもらった文 backImagePicker = backPicker を　switch文のcaseに使っている
+    /// loveeさんから加筆もしくは修正してもらった文 backImagePicker = backPicker を　switch文のcaseに使っている
 	backImagePicker = backPicker
     
     
@@ -388,7 +393,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
   }
   // UIImagePickerのデリゲートメソッド
   
-    // loveeさんから加筆もしくは修正してもらった文 UIImagePickerController を picker として引数に渡している。　switch で case に分岐して front と back に応じてそれぞれ表示している。
+    /// loveeさんから加筆もしくは修正してもらった文 UIImagePickerController を picker として引数に渡している。　switch で case に分岐して front と back に応じてそれぞれ表示している。
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     // 画像を置き換える　1[editedImage] 2[originalImage] で表示される。　ちょー重要。
     // 1のときはインスタンスの生成に frontPicker.allowsEditing = true を書き込む
@@ -416,7 +421,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 		break
 	}
       // 前の画面に戻る
-    // loveeさんから加筆もしくは修正してもらった文 引数pickerで前の画面に戻る。
+    /// loveeさんから加筆もしくは修正してもらった文 引数pickerで前の画面に戻る。
       picker.dismiss(animated: true, completion: nil)
     
   }
